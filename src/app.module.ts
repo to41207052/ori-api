@@ -4,11 +4,13 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';;
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
     AuthModule,
     UsersModule,
+    CommentModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host : process.env.DB_HOST || 'localhost',
@@ -18,7 +20,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';;
       database: process.env.DB_DATABASE || 'comment_db',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
-    })
+    }),
+    CommentModule
   ],
   controllers: [AppController],
   providers: [AppService],
