@@ -21,7 +21,6 @@ import { CommentModule } from './comment/comment.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    CommentModule
   ],
   controllers: [AppController],
   providers: [AppService],

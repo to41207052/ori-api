@@ -8,9 +8,9 @@ export class CommentController {
 
     @Get()
     async getComment(){
-        console.log(`◾️◾️◾️◾️◾️◾️◾️◾️◾️contoroller1◾️◾️◾️◾️◾️◾️◾️◾️◾️`);
-        const comment = await this.commentService.findRandComment();
-        console.log(`◾️◾️controller2◾️◾️◾️◾️◾️◾️◾️${comment}◾️◾️◾️◾️◾️◾️◾️◾️◾️`);
+
+        const comment = await this.commentService.randomComment();
+
      return comment
     }
 }
