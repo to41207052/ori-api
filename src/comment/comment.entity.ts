@@ -18,9 +18,12 @@ export class Comment {
     })
     readonly commentId?: number;
 
-    @Column('text', {
+    @Column({
         name: 'comment',
         nullable: false,
+        type: 'text',
+        charset: 'utf8mb4',
+        collation: 'utf8mb4_unicode_ci',
     })
     comment: string;
 }

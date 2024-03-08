@@ -9,7 +9,10 @@ services:
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: comment_db
       TZ: UTC
+      MYSQL_CHARSET: utf8mb4_unicode_ci
+      MYSQL_COLLATION: utf8mb4_unicode_ci
     volumes:
       - ./initdb.d:/docker-entrypoint-initdb.d:ro
       - db-storage:/var/lib/mysql

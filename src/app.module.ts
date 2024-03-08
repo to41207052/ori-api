@@ -5,6 +5,8 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';;
 import { CommentModule } from './comment/comment.module';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+// import { ResponseInterceptor } from './response.interceptor';
 
 @Module({
   imports: [
@@ -23,6 +25,12 @@ import { CommentModule } from './comment/comment.module';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService
+    // {
+    //   provide: APP_INTERCEPTOR,
+    //   useClass: ResponseInterceptor
+    // }
+  ],
 })
 export class AppModule {}

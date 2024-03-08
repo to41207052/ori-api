@@ -25,6 +25,7 @@ export class CommentService {
 
             const random: number = Math.floor(Math.random()* b + 1)
             console.log(random)
+            console.log(`💪( ¨̮ 💪)`)
 
             const randComment = await this.commentRepository.createQueryBuilder('Comment')
             .select([
