@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CommentService } from './comment.service';
 
 
@@ -6,11 +6,20 @@ import { CommentService } from './comment.service';
 export class CommentController {
     constructor(private readonly commentService: CommentService){}
 
+    // 接続するとコメントがランダムに返ってくる http://localhost:3000/comment
     @Get()
     async getComment(){
+        const commentOBJ = await this.commentService.randomComment();
+        return commentOBJ.comment
+    }
 
-        const comment = await this.commentService.randomComment();
-
-     return comment
+    // データを挿入する
+    @Post('post')
+    async postComment(
+        @Body() comment : {comment: string}
+    ){
+        console.log((comment.comment))
+        await this.commentService.PostComment(comment);
+        return `${comment.comment} INSERT 完了`;
     }
 }

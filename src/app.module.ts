@@ -5,8 +5,6 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';;
 import { CommentModule } from './comment/comment.module';
-import { APP_INTERCEPTOR } from '@nestjs/core';
-// import { ResponseInterceptor } from './response.interceptor';
 
 @Module({
   imports: [
@@ -20,6 +18,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
       username: process.env.DB_USERNAME || 'root',
       password: process.env.DB_PASSWORD || 'root',
       database: process.env.DB_DATABASE || 'comment_db',
+      charset: 'utf8mb4',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
