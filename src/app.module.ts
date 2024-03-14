@@ -4,11 +4,17 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommentModule } from './comment/comment.module';
 import { AccountsModule } from './account/accounts.module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
     AccountsModule,
     CommentModule,
+    JwtModule.register({
+      secret: 'dgfserq3tefawef323fe2t5ue567j5',
+      secretOrPrivateKey: 'asasfasfasfa',
+      signOptions: { expiresIn: '1h' },
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DB_HOST || 'localhost',

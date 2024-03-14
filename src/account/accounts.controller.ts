@@ -7,10 +7,16 @@ import {
 } from '@nestjs/common';
 import { AccountsService } from './accounts.service';
 import { findAccountDto } from './accounts.request';
+import { JwtService } from '@nestjs/jwt';
+import { JwtModule } from '@nestjs/jwt';
 
 @Controller('account')
 export class AccountsController {
-  constructor(private readonly accountsService: AccountsService) {}
+  constructor(
+    private readonly accountsService: AccountsService,
+    private readonly jwtService: JwtService,
+    private readonly jwtModule: JwtModule,
+  ) {}
   /**アカウント登録 */
   @Post('post')
   async registerAccount(
@@ -36,6 +42,16 @@ export class AccountsController {
   @UsePipes(new ValidationPipe({ transform: true }))
   async findAccount(@Body() account: findAccountDto) {
     console.log(account);
-    return await this.accountsService.findAccount(account);
+    const judge = await this.accountsService.findAccount(account);
+    if (judge === true) {
+      console.log('トークンの生成を開始');
+      console.log(this.jwtService.sign({ id: account.id }));
+      const secret = JwtModule.register({ secret: 'aewawfwq' });
+      const accessToken = this.jwtService.sign({ id: account.id });
+      // console.log(`アクセストークンです：${accessToken}`);
+    } else {
+      console.log(judge);
+      throw new Error('しらんなあ');
+    }
   }
 }
