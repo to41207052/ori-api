@@ -5,14 +5,13 @@ import { CommentService } from './comment.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Comment } from './comment.entity';
 @Module({
-  imports:[
-     TypeOrmModule.forFeature([
+  imports: [
+    TypeOrmModule.forFeature([
       // CommentRepository,
-      Comment
-    ]), 
-     
+      Comment,
+    ]),
   ],
   controllers: [CommentController],
-  providers: [CommentService]
+  providers: [CommentService],
 })
 export class CommentModule {}

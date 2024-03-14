@@ -1,15 +1,17 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';;
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommentModule } from './comment/comment.module';
+import { AccountsModule } from './account/accounts.module';
 
 @Module({
   imports: [
+    AccountsModule,
     CommentModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host : process.env.DB_HOST || 'localhost',
+      host: process.env.DB_HOST || 'localhost',
       port: parseInt(process.env.DB_PORT, 10) || 3306,
       username: process.env.DB_USERNAME || 'root',
       password: process.env.DB_PASSWORD || 'root',
@@ -21,7 +23,7 @@ import { CommentModule } from './comment/comment.module';
   ],
   controllers: [AppController],
   providers: [
-    AppService
+    AppService,
     // {
     //   provide: APP_INTERCEPTOR,
     //   useClass: ResponseInterceptor
