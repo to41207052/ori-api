@@ -29,7 +29,7 @@ bodyに <br>
 して send するとデータベース comment テーブルに挿入されます
 
 ## account POST
-http://localhost:3000/account/post へPOST<br>
+http://localhost:3000/account/post<br>
 body<br>
 {
     "accountId": "ID",
@@ -38,3 +38,15 @@ body<br>
     "password": "Password"
 }<br>
 <span style="color:red"><b>!!!注意!!! 現状insert失敗した場合でもaccount-numberが進みます</b></span>
+
+## account POST(LOGIN)
+http://localhost:3000/account/login<br>
+body<br>
+{
+    "id": "ID",
+    "pass": "pass"
+}<br>
+id,passがない場合エラーします。<br>
+二つの値がテーブル<br>
+ 存在する場合: true<br>
+     ない場合: false <br>
