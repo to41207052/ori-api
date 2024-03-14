@@ -4,7 +4,7 @@ import { CommentService } from './comment.service';
 
 @Controller('comment')
 export class CommentController {
-    constructor(private readonly commentService: CommentService){}
+  constructor(private readonly commentService: CommentService) {}
 
     // 接続するとコメントがランダムに返ってくる http://localhost:3000/comment
     @Get()
@@ -18,8 +18,9 @@ export class CommentController {
     async postComment(
         @Body() comment : {comment: string}
     ){
-        console.log((comment.comment))
         await this.commentService.PostComment(comment);
-        return `${comment.comment} INSERT 完了`;
+        return console.log(`
+        ${comment.comment} 
+        INSERT 完了しました`);
     }
 }
