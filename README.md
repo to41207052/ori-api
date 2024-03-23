@@ -17,11 +17,11 @@ ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'root';<br>
 
 # 現在の実装
 ## comment GET
-http://localhost:3000/comment に接続するとcommentのオブジェクトがランダムで帰ってきます
+http://localhost:3300/comment に接続するとcommentのオブジェクトがランダムで帰ってきます
 
 
 ## comment POST
-http://localhost:3000/comment/post へPOST してみてください、Thunder-Clientなどを使用<br>
+http://localhost:3300/comment/post へPOST してみてください、Thunder-Clientなどを使用<br>
 bodyに <br>
 {
     "comment" : "ここにコメント"
@@ -29,7 +29,7 @@ bodyに <br>
 して send するとデータベース comment テーブルに挿入されます
 
 ## account POST
-http://localhost:3000/account/post<br>
+http://localhost:3300/account/post<br>
 body<br>
 {
     "accountId": "ID",
@@ -50,3 +50,12 @@ id,passがない場合エラーします。<br>
 二つの値がテーブル<br>
  存在する場合: true<br>
      ない場合: false <br>
+
+## Albion関連
+### 私のステータス
+http://localhost:3300/albion/mystatus
+### 名前を検索
+Piendの部分は検索したいものを入れる<br>
+http://localhost:3300/albion/Piend
+### IDでステータスを検索
+http://localhost:3300/albion/status/qJkHQXYsQI-_H71DF0Qw0Q
