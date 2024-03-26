@@ -20,8 +20,8 @@ export class AlbionController {
 
   // idを指定されたSTATUSを返す
   @Get('status/:id')
-  async getStatus() {
-    const data = await this.albionService.getMyStatus();
+  async getStatus(@Param('id') id: string) {
+    const data = await this.albionService.getStatus(id);
     return data;
   }
 }
