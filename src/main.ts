@@ -12,7 +12,7 @@ async function bootstrap() {
 
   // CORSオプションを設定
   const corsOptions: CorsOptions = {
-    origin: 'http://localhost:3000', // 許可するオリジン
+    origin: '*', // 許可するオリジン
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
     optionsSuccessStatus: 200,
