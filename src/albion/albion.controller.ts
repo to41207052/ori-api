@@ -7,7 +7,7 @@ export class AlbionController {
   @Get('mystatus')
   async getmyStatus() {
     const data = await this.albionService.getMyStatus();
-    console.log(`IN CONTROLLER:${data}`);
+    console.log(`MYSTATUS:${data}`);
     return data;
   }
 
@@ -22,6 +22,7 @@ export class AlbionController {
   @Get('status/:id')
   async getStatus(@Param('id') id: string) {
     const data = await this.albionService.getStatus(id);
+    console.log(`STATUS:${data}`);
     return data;
   }
 }
