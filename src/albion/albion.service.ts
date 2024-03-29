@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-
+import fetch from 'node-fetch';
 @Injectable()
 export class AlbionService {
   constructor() {}
@@ -10,6 +10,30 @@ export class AlbionService {
       'https://gameinfo-sgp.albiononline.com/api/gameinfo/players/qJkHQXYsQI-_H71DF0Qw0Q',
     );
     const data = await res.json();
+    return data;
+  }
+
+  async getAvatar(): Promise<Buffer> {
+    let avatar: string;
+    const num: number = Math.floor(Math.random() * 4 + 1);
+    switch (num) {
+      case 1:
+        avatar = 'ADVENTURER_JOURNEYMAN';
+        break;
+      case 2:
+        avatar = 'ADVENTURER_ADEPT';
+        break;
+      case 3:
+        avatar = 'ADVENTURER_EXPERT';
+        break;
+      case 4:
+        avatar = 'ADVENTURER_MASTER';
+        break;
+    }
+    const res = await fetch(
+      `https://render.albiononline.com/v1/destiny/${avatar}.png`,
+    );
+    const data: Buffer = await res.buffer(); // buffer() メソッドを使用する
     return data;
   }
 

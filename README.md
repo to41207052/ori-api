@@ -60,7 +60,13 @@ http://localhost:3300/albion/Piend
 ### IDでステータスを検索
 http://localhost:3300/albion/status/qJkHQXYsQI-_H71DF0Qw0Q
 
+### 公式からアバターの画像をランダムに表示
+http://localhost:3300/albion/avatar
+
+
+
 ### デプロイ先
 https://ori-api.onrender.com/albion/mystatus
 https://ori-api.onrender.com/albion/Piend
 https://ori-api.onrender.com/albion/status/qJkHQXYsQI-_H71DF0Qw0Q
+
